@@ -54,6 +54,7 @@
 			);
 			$this->_downloaded = array();
 			$this->_skipped = array();
+			$this->_filter = "WEB";
 		}
 
 		/**
@@ -86,6 +87,26 @@
 							array_push($this->_tables, $arr[$i]);
 						} else { throw new Exception("Invalid argument given."); }
 					}
+				} else { throw new Exception("Invalid argument given."); }
+			}
+			
+		/**
+		 *  Sets filter that will be use on query.
+		 *
+		 *  @param $filter  String   Valid string values are:
+		 *                          "ALL", "WEB", "MOBILE", "IMAGE",
+		 *                          "VIDEO".
+		 */
+			public function SetFilter($filter)
+			{
+				if(!empty($filter) && is_string($filter)) {
+					$valid = array("ALL","WEB","MOBILE","IMAGE",
+					  "VIDEO");
+					$this->_filter = array();
+					if(in_array($filter, $valid))
+					{
+						$this->_filter = $filter;
+					} else { throw new Exception("Invalid argument given."); }
 				} else { throw new Exception("Invalid argument given."); }
 			}
 
