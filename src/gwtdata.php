@@ -308,7 +308,7 @@
                         }
 						else {
 							$finalName = "$savepath/$table-$filename.csv";
-							$finalUrl = $downloadUrls[$table] ."&prop=ALL&db=%s&de=%s&more=true";
+							$finalUrl = $downloadUrls[$table] ."&prop=" . $this->_filter . "&db=%s&de=%s&more=true";
 							$finalUrl = sprintf($finalUrl, $this->_daterange[0], $this->_daterange[1]);
 							self::SaveData($finalUrl,$finalName);
 						}
